@@ -24,9 +24,12 @@ describe("카운트 컴포넌트에 대한 테스팅", () => {
     expect(count.textContent).toBe("1");
   });
   it("- 클릭시, 값이 1 감소하는가?", () => {
+    //arrange
     const count = screen.getByRole("count");
     const decreaseButton = screen.getByRole("button", { name: "-" });
+    //act
     fireEvent.click(decreaseButton);
+    //assert
     expect(count.textContent).toBe("-1");
   });
   it("reset 클릭시, 값이 initValue가 되는가?", () => {
