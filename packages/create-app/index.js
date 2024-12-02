@@ -19,7 +19,6 @@ program
     const templatesDir = path.resolve(__dirname, "../../templates");
     const targetDir = path.resolve(process.cwd(), projectName);
     const templates = readdirSync(templatesDir);
-    console.log(1);
     let template = templateName;
 
     if (!template) {
