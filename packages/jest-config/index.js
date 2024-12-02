@@ -9,6 +9,7 @@ function createJestConfig(targetDir) {
   const targetPath = path.join(targetDir, "jest.config.ts");
   const templatePath = path.join(__dirname, "jest.config.ts");
   const packageJsonPath = path.join(targetDir, "package.json");
+  const testDirPath = path.join(targetDir, "__test__");
   if (fs.existsSync(packageJsonPath)) {
     const packageJson = fs.readJsonSync(packageJsonPath);
     packageJson.scripts = { ...packageJson.scripts, ...{ test: "jest" } };
@@ -18,6 +19,7 @@ function createJestConfig(targetDir) {
 
   if (!fs.existsSync(targetPath)) {
     fs.copyFileSync(templatePath, targetPath);
+    fs.mkdirSync(testDirPath);
     console.log(`✅ Created jest.config.ts at ${targetPath}`);
   } else {
     console.log(`⚠️ jest.config.ts already exists at ${targetPath}`);
